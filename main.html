@@ -1,342 +1,391 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
-<title>💦🌀 𝐒𝐎 𝐌𝐈𝐍𝐈 𝐁𝐎𝐓 🌀💦</title>  
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">  
-<style>  
-*{box-sizing:border-box}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>💦🌀 𝐒𝐎 𝐌𝐈𝐍𝐈 𝐁𝐎𝐓 🌀💦</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #0d001a;
+      --bg2: #000000;
+      --box: rgba(20, 0, 40, 0.45);
+      --text: #e0f7ff;
+      --accent: #00f0ff;
+      --accent-dark: #0088cc;
+      --glow: 0 0 30px rgba(0, 240, 255, 0.55);
+      --glow-strong: 0 0 50px rgba(0, 240, 255, 0.7);
+    }
 
-:root{  
---bg1:#00a8ff;  
---bg2:#001d3d;  
---box:rgba(0,168,255,0.18);  
---text:#fff;  
---accent:#00ffff;  
-}  
+    * { box-sizing: border-box; margin:0; padding:0; }
 
-body.dark{  
---bg1:#000;  
---bg2:#000;  
---box:rgba(255,255,255,0.08);  
---text:#fff;  
---accent:#00ffff;  
-}  
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, var(--bg1), var(--bg2) 75%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: var(--text);
+    }
 
-body{  
-margin:0;  
-height:100vh;  
-font-family:Poppins,sans-serif;  
-background:radial-gradient(circle at top,var(--bg1),var(--bg2) 65%);  
-display:flex;  
-justify-content:center;  
-align-items:center;  
-overflow:hidden;  
-color:var(--text);  
-}  
+    .welcome-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(14px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeIn 0.7s;
+    }
 
-.welcome-overlay{  
-position:fixed;  
-inset:0;  
-background:rgba(0,0,0,.6);  
-backdrop-filter:blur(8px);  
-display:flex;  
-justify-content:center;  
-align-items:center;  
-z-index:9999;  
-animation:fadeIn .6s;  
-}  
+    @keyframes fadeIn { from {opacity:0} to {opacity:1} }
 
-@keyframes fadeIn{  
-from{opacity:0}  
-to{opacity:1}  
-}  
+    .welcome-box {
+      width: 340px;
+      padding: 30px 25px;
+      border-radius: 28px;
+      background: var(--box);
+      border: 1px solid rgba(0,240,255,0.18);
+      text-align: center;
+      box-shadow: var(--glow-strong), inset 0 0 25px rgba(0,240,255,0.1);
+      animation: pop 0.7s;
+    }
 
-.welcome-box{  
-width:320px;  
-padding:25px;  
-border-radius:25px;  
-background:var(--box);  
-text-align:center;  
-box-shadow:0 0 35px var(--accent);  
-animation:pop .6s;  
-}  
+    @keyframes pop { from {transform: scale(0.75)} to {transform: scale(1)} }
 
-@keyframes pop{  
-from{transform:scale(.8)}  
-to{transform:scale(1)}  
-}  
+    .follow-btn {
+      display: block;
+      margin: 20px 0;
+      padding: 14px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #000;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: var(--glow);
+      transition: all 0.4s;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+    }
 
-.follow-btn{  
-display:block;  
-margin:15px 0;  
-padding:12px;  
-border-radius:30px;  
-background:linear-gradient(135deg,#00a8ff,#001d3d);  
-color:#fff;  
-font-weight:bold;  
-text-decoration:none;  
-box-shadow:0 0 15px var(--accent);  
-}  
+    .follow-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: var(--glow-strong);
+    }
 
-.skip-btn{  
-margin-top:10px;  
-background:none;  
-border:none;  
-color:#fff;  
-cursor:pointer;  
-opacity:.85;  
-font-size:14px;  
-}  
+    .skip-btn {
+      margin-top: 12px;
+      background: none;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 15px;
+      opacity: 0.9;
+      transition: all 0.3s;
+    }
 
-#follow-count{  
-margin-top:10px;  
-color:#00a8ff;  
-font-weight:bold;  
-}  
+    .skip-btn:hover { opacity: 1; text-shadow: 0 0 10px var(--accent); }
 
-.box{  
-width:340px;  
-padding:25px;  
-border-radius:22px;  
-background:var(--box);  
-backdrop-filter:blur(18px);  
-text-align:center;  
-box-shadow:0 0 35px var(--accent);  
-animation:glow 3s infinite alternate;  
-}  
-@keyframes glow{  
-from{box-shadow:0 0 20px var(--accent)}  
-to{box-shadow:0 0 45px var(--accent)}  
-}  
+    #follow-count {
+      margin-top: 15px;
+      color: var(--accent);
+      font-weight: 600;
+      text-shadow: 0 0 8px var(--accent);
+    }
 
-.fa-water{  
-font-size:3rem;  
-color:var(--accent);  
-text-shadow:0 0 15px var(--accent);  
-animation:bounce 2s infinite;  
-}  
-@keyframes bounce{50%{transform:translateY(-8px)}}  
+    .box {
+      width: 360px;
+      padding: 35px 25px;
+      border-radius: 28px;
+      background: var(--box);
+      backdrop-filter: blur(22px);
+      border: 1px solid rgba(0,240,255,0.22);
+      text-align: center;
+      box-shadow: var(--glow-strong), inset 0 0 30px rgba(0,240,255,0.12);
+      animation: glow 4s infinite alternate;
+    }
 
-.input-container{  
-margin-top:20px;  
-display:flex;  
-border-radius:30px;  
-overflow:hidden;  
-background:#fff;  
-box-shadow:0 0 15px var(--accent);  
-}  
-.input-container input{  
-width:70%;  
-border:none;  
-padding-left:1rem;  
-font-size:1rem;  
-outline:none  
-}  
-.input-container button{  
-width:30%;  
-border:none;  
-cursor:pointer;  
-background:linear-gradient(135deg,#00a8ff,#001d3d);  
-color:#fff;  
-font-weight:bold  
-}  
+    @keyframes glow {
+      from { box-shadow: 0 0 25px rgba(0,240,255,0.4); }
+      to   { box-shadow: 0 0 70px rgba(0,240,255,0.75); }
+    }
 
-.loader{  
-display:none;  
-margin:15px auto;  
-width:40px;height:40px;  
-border:4px solid #fff;  
-border-top:4px solid var(--accent);  
-border-radius:50%;  
-animation:spin 1s linear infinite  
-}  
-@keyframes spin{to{transform:rotate(360deg)}}  
+    .fa-water {
+      font-size: 4rem;
+      color: var(--accent);
+      text-shadow: 0 0 25px var(--accent);
+      animation: pulse 2.8s infinite;
+    }
 
-.toast{  
-position:fixed;  
-bottom:20px;  
-left:50%;  
-transform:translateX(-50%);  
-background:#000;  
-color:#fff;  
-padding:10px 20px;  
-border-radius:20px;  
-display:none;  
-box-shadow:0 0 15px var(--accent)  
-}  
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.18); }
+    }
 
-.theme{  
-position:fixed;  
-top:15px;  
-right:15px;  
-background:var(--accent);  
-color:#000;  
-border:none;  
-padding:8px 12px;  
-border-radius:20px;  
-cursor:pointer;  
-font-weight:bold  
-}  
+    h3 {
+      margin: 15px 0 8px;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px var(--accent);
+    }
 
-.hamburger{  
-position:fixed;  
-top:18px;  
-left:18px;  
-font-size:26px;  
-color:var(--accent);  
-cursor:pointer;  
-z-index:10001;  
-text-shadow:0 0 12px var(--accent);  
-}  
+    h6 {
+      margin: 6px 0;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
 
-.side-menu{  
-position:fixed;  
-top:0;  
-left:-260px;  
-width:260px;  
-height:100%;  
-background:rgba(0,0,0,.85);  
-backdrop-filter:blur(12px);  
-padding:25px;  
-transition:.4s;  
-z-index:10000;  
-}  
-.side-menu.active{left:0}  
+    .input-container {
+      margin-top: 25px;
+      display: flex;
+      border-radius: 50px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(0,240,255,0.35);
+      box-shadow: var(--glow);
+    }
 
-.side-menu h3{  
-color:var(--accent);  
-text-align:center;  
-margin-bottom:25px;  
-}  
-.side-menu a{  
-display:block;  
-padding:14px;  
-margin-bottom:12px;  
-border-radius:14px;  
-text-decoration:none;  
-color:#fff;  
-background:rgba(255,255,255,.1);  
-}  
-.side-menu a i{margin-right:10px;color:var(--accent)}  
-.side-menu a:hover{background:var(--accent);color:#000}  
+    .input-container input {
+      width: 70%;
+      border: none;
+      padding: 0 1.2rem;
+      font-size: 1.1rem;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
 
-</style>  
-</head>  
-<body>  
+    .input-container button {
+      width: 30%;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #000;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s;
+    }
+
+    .input-container button:hover {
+      background: linear-gradient(135deg, #00ffff, #00aaff);
+    }
+
+    .loader {
+      display: none;
+      margin: 20px auto;
+      width: 45px; height: 45px;
+      border: 5px solid rgba(255,255,255,0.15);
+      border-top: 5px solid var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to {transform: rotate(360deg)} }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.9);
+      color: var(--accent);
+      padding: 12px 28px;
+      border-radius: 50px;
+      border: 1px solid var(--accent);
+      display: none;
+      box-shadow: var(--glow);
+      font-weight: 600;
+    }
+
+    .theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: var(--glow);
+      z-index: 10002;
+    }
+
+    .hamburger {
+      position: fixed;
+      top: 22px;
+      left: 22px;
+      font-size: 28px;
+      color: var(--accent);
+      cursor: pointer;
+      z-index: 10001;
+      text-shadow: 0 0 15px var(--accent);
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: rgba(10,0,30,0.95);
+      backdrop-filter: blur(15px);
+      padding: 30px 20px;
+      transition: 0.5s;
+      z-index: 10000;
+      border-right: 1px solid rgba(0,240,255,0.2);
+    }
+
+    .side-menu.active { left: 0; }
+
+    .side-menu h3 {
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 30px;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 3px;
+      text-shadow: 0 0 12px var(--accent);
+    }
+
+    .side-menu a {
+      display: block;
+      padding: 16px;
+      margin-bottom: 15px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(0,240,255,0.15);
+      transition: all 0.3s;
+    }
+
+    .side-menu a i { margin-right: 12px; color: var(--accent); }
+
+    .side-menu a:hover {
+      background: var(--accent);
+      color: #000;
+      transform: translateX(8px);
+      box-shadow: var(--glow);
+    }
+  </style>
+</head>
+<body>
+
 <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
 
-<div class="side-menu" id="sideMenu">  
-  <h3>🌀 𝐒𝐎 𝐌𝐄𝐍𝐔 💦</h3>  
-  <a href="https://wa.me/94724389699" onclick="closeMenu()"><i class="fas fa-user"></i> Contact Owner</a>  
-  <a href="https://chat.whatsapp.com/Jumzn66rDOx9UHSs9z4qIL" onclick="closeMenu()"><i class="fas fa-users"></i> Support Group</a>  
-  <a href="https://whatsapp.com/channel/0029VaicB1MISTkGyQ7Bqe23" onclick="closeMenu()"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>  
-  <a href="https://www.youtube.com/@shanukashameen" onclick="closeMenu()"><i class="fab fa-youtube"></i> YouTube</a>  
-</div>  
+<div class="side-menu" id="sideMenu">
+  <h3>🌀 𝐒𝐎 𝐌𝐄𝐍𝐔 💦</h3>
+  <a href="https://wa.me/94724389699" onclick="closeMenu()"><i class="fas fa-user"></i> Contact Owner</a>
+  <a href="https://chat.whatsapp.com/Jumzn66rDOx9UHSs9z4qIL" onclick="closeMenu()"><i class="fas fa-users"></i> Support Group</a>
+  <a href="https://whatsapp.com/channel/0029VaicB1MISTkGyQ7Bqe23" onclick="closeMenu()"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>
+  <a href="https://www.youtube.com/@shanukashameen" onclick="closeMenu()"><i class="fab fa-youtube"></i> YouTube</a>
+</div>
 
-<div class="welcome-overlay" id="welcome">  
-  <div class="welcome-box">  
-    <i class="fas fa-water" style="font-size:2.5rem;color:var(--accent)"></i>  
-    <h2>💦 𝐒𝐎 𝐌𝐈𝐍𝐈 💦</h2>  
-    <p>Follow our WhatsApp Channel to continue</p>  
-    <a class="follow-btn"   
-       href="https://whatsapp.com/channel/0029VaicB1MISTkGyQ7Bqe23"   
-       target="_blank"  
-       onclick="followChannel()">  
-       👉 Follow Channel  
-    </a>  
-    <button class="skip-btn" onclick="skipWelcome()">Skip</button>  
+<div class="welcome-overlay" id="welcome">
+  <div class="welcome-box">
+    <i class="fas fa-water" style="font-size:3rem;"></i>
+    <h2 style="font-family:'Orbitron'; letter-spacing:2px; text-shadow:0 0 15px var(--accent);">💦 𝐒𝐎 𝐌𝐈𝐍𝐈 💦</h2>
+    <p>Follow our WhatsApp Channel to continue</p>
+    <a class="follow-btn" href="https://whatsapp.com/channel/0029VaicB1MISTkGyQ7Bqe23" target="_blank" onclick="followChannel()">
+      👉 Follow Channel
+    </a>
+    <button class="skip-btn" onclick="skipWelcome()">Skip</button>
     <p id="follow-count">Followed: 0</p>
-  </div>  
-</div>  
+  </div>
+</div>
 
 <button class="theme" onclick="toggleTheme()">🌙 / 💦</button>
 
-<div class="box">  
-  <i class="fas fa-water"></i>  
-  <h3>💦🌀 𝐒𝐎 𝐌𝐈𝐍𝐈 𝐁𝐎𝐓 🌀💦</h3>  
-  <h6>Oᴡɴᴇʀ Bʏ Sʜᴀɴᴜᴋᴀ Sʜᴀᴍᴇᴇɴ</h6>  
-  <h6>🔢 Enter your number with country code</h6>  
-  <div class="input-container">  
-    <input placeholder="9472xxxxxxx" type="number" id="number">  
-    <button id="submit">Submit</button>  
-  </div>  
-  <div class="loader" id="loader"></div>  
-  <main id="pair"></main>  
-</div>  
+<div class="box">
+  <i class="fas fa-water"></i>
+  <h3>💦🌀 𝐒𝐎 𝐌𝐈𝐍𝐈 𝐁𝐎𝐓 🌀💦</h3>
+  <h6>Oᴡɴᴇʀ Bʏ Sʜᴀɴᴜᴋᴀ Sʜᴀᴍᴇᴇɴ</h6>
+  <h6>🔢 Enter your number with country code</h6>
+  <div class="input-container">
+    <input placeholder="9472xxxxxxx" type="number" id="number">
+    <button id="submit">Submit</button>
+  </div>
+  <div class="loader" id="loader"></div>
+  <main id="pair"></main>
+</div>
 
-<div class="toast" id="toast"></div>  
+<div class="toast" id="toast"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>  
-<script>  
-let a=document.getElementById("pair");  
-let b=document.getElementById("submit");  
-let c=document.getElementById("number");  
-let l=document.getElementById("loader");  
-let t=document.getElementById("toast");  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+<script>
+let a = document.getElementById("pair");
+let b = document.getElementById("submit");
+let c = document.getElementById("number");
+let l = document.getElementById("loader");
+let t = document.getElementById("toast");
 
-async function getFollowCount(){  
-  try{  
-    const res = await fetch('/api/follow-count');  
-    const data = await res.json();  
-    document.getElementById('follow-count').innerText = `Followed: ${data.count}`;  
-  }catch{  
-    document.getElementById('follow-count').innerText = `Followed: ?`;  
-  }  
-}  
+async function getFollowCount(){
+  try{
+    const res = await fetch('/api/follow-count');
+    const data = await res.json();
+    document.getElementById('follow-count').innerText = `Followed: ${data.count}`;
+  }catch{
+    document.getElementById('follow-count').innerText = `Followed: ?`;
+  }
+}
 
-async function followChannel(){  
-  try{await fetch('/api/increment-follow',{method:'POST'});}catch{}  
-  closeWelcome();  
-}  
+async function followChannel(){ 
+  try{await fetch('/api/increment-follow',{method:'POST'});}catch{}
+  closeWelcome();
+}
 
-function skipWelcome(){  
-  closeWelcome();  
-  showToast("Skipped 💦");  
-}  
+function skipWelcome(){
+  closeWelcome();
+  showToast("Skipped 💦");
+}
 
-function closeWelcome(){  
-  document.getElementById("welcome").style.display="none";  
-}  
+function closeWelcome(){
+  document.getElementById("welcome").style.display="none";
+}
 
-function showToast(msg){  
-t.innerText=msg;  
-t.style.display="block";  
-setTimeout(()=>t.style.display="none",2000);  
-}  
+function showToast(msg){
+  t.innerText=msg;
+  t.style.display="block";
+  setTimeout(()=>t.style.display="none",2200);
+}
 
-function toggleTheme(){  
-document.body.classList.toggle("dark");  
-}  
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+}
 
-async function Copy(){  
-let obj=document.getElementById("copy");  
-await navigator.clipboard.writeText(obj.innerText.replace('CODE: ',''));  
-showToast("Copied Successfully 💦");  
-}  
+async function Copy(){
+  let obj = document.getElementById("copy");
+  await navigator.clipboard.writeText(obj.innerText.replace('CODE: ',''));
+  showToast("Copied Successfully 💦");
+}
 
-b.addEventListener("click",async(e)=>{  
-e.preventDefault();  
-if(!c.value){showToast("Enter Number");return}  
-l.style.display="block";  
-a.innerHTML="";  
-const number=c.value.replace(/[^0-9]/g,"");  
-let {data}=await axios(`/code?number=${number}`);  
-l.style.display="none";  
-let code=data.code||"Service Unavailable";  
-a.innerHTML=`<font id="copy" onclick="Copy()" style="color:#00ffff;font-weight:bold" size="5">CODE: <span style="color:white;">${code}</span></font>`;  
-});  
+b.addEventListener("click",async(e)=>{
+  e.preventDefault();
+  if(!c.value){showToast("Enter Number");return}
+  l.style.display="block";
+  a.innerHTML="";
+  const number = c.value.replace(/[^0-9]/g,"");
+  let {data} = await axios(`/code?number=${number}`);
+  l.style.display="none";
+  let code = data.code || "Service Unavailable";
+  a.innerHTML = `<font id="copy" onclick="Copy()" style="color:var(--accent);font-weight:bold;font-size:1.6rem;cursor:pointer;">CODE: <span style="color:#e0f7ff;">${code}</span></font>`;
+});
 
-window.onload=getFollowCount;  
+window.onload = getFollowCount;
 
-function toggleMenu(){  
-document.getElementById("sideMenu").classList.toggle("active");  
-}  
-function closeMenu(){  
-document.getElementById("sideMenu").classList.remove("active");  
-}  
-</script>  
-</body>  
+function toggleMenu(){
+  document.getElementById("sideMenu").classList.toggle("active");
+}
+function closeMenu(){
+  document.getElementById("sideMenu").classList.remove("active");
+}
+</script>
+</body>
 </html>
